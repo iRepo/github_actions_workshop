@@ -16,13 +16,16 @@ jobs:
         with:
           node-version: 16
           cache: "npm"
-      - run: npm install --frozen-lockfile
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - run: yarn --frozen-lockfile
 
       - name: Unit Tests (using Jest)
-        run: npm run test:unit
+        run: yarn test:unit
 
       - name: UI-Unit Tests (using React-Testing Lib & Storybook)
-        run: npm run test:ui-jest
+        run: yarn test:ui-jest
 
   build:
     name: "Deploy"
